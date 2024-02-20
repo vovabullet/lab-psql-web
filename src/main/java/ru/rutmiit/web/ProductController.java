@@ -44,8 +44,8 @@ public class ProductController {
         return "products-by-supplier";
     }
 
-    @GetMapping("/productsByRevaluation/{startDate}/{endDate}")
-    public String showProductsByRevaluation(Model model, @PathVariable Date startDate, @PathVariable Date endDate) {
+    @GetMapping("/productsByRevaluation/")
+    public String showProductsByRevaluation(Model model, @RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
         List<String> products = productService.findProductsByRevaluationDateRange(startDate, endDate);
         model.addAttribute("products", products);
         return "products-by-revaluation";

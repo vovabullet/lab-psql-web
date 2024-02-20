@@ -10,17 +10,15 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Quantity</th>
-                <th>Wholesale price</th>
-                <th>Product name</th>
-                <th>Receipt ID</th>
+                <th>Warehouse name</th>
+                <th>Address</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="warehouse : ${findAll}">
+                <td th:text="${warehouse.getWarehouseId()}"></td>
                 <td th:text="${warehouse.getName()}"></td>
                 <td th:text="${warehouse.getAddress()}"></td>
-                <td th:text="${warehouse.getWarehouseId()}"></td>
             </tr>
             </tbody>
         </table>
