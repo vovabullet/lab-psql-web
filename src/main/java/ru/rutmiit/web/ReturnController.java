@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.rutmiit.services.ReturnService;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -19,8 +20,8 @@ public class ReturnController {
     }
 
     @GetMapping("/findSuppliersWithReturnsInPeriod")
-    public String showSuppliersWithReturnsInPeriod(@RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
-                                                   @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
+    public String showSuppliersWithReturnsInPeriod(@RequestParam("RStartDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+                                                   @RequestParam("REndDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
                                                    Model model) {
         List<String> suppliers = returnService.findSuppliersWithReturnsInPeriod(startDate, endDate);
         model.addAttribute("suppliers", suppliers);

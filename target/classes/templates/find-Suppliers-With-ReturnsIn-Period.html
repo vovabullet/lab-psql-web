@@ -5,14 +5,18 @@
 <div th:replace="fragments/navbar">Navbar</div>
 <main class="flex-shrink-0">
     <div class="container">
-        <h2>Suppliers with Returns in Period</h2>
-        <table>
+        <h2 class="text-center text-dark mt-5">Suppliers with returns in period from <span th:text="${startDate}"></span> to <span th:text="${endDate}"></span></h2>
+        <table class="table table-striped">
+            <thead>
             <tr>
                 <th>Supplier Name</th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="supplier : ${suppliers}">
                 <td th:text="${supplier}"></td>
             </tr>
+            </tbody>
         </table>
     </div>
 </main>

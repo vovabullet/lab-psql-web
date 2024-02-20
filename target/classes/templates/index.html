@@ -18,7 +18,7 @@
 
                 <br><br><br>
                 <div class="justify-content-center">
-                    <h2>Products by Supplier</h2>
+                    <h2>Список товаров, поставляемых определённой фирмой</h2>
                 </div>
 
                 <form th:action="@{/products/productsBySupplier}" method="get">
@@ -29,9 +29,8 @@
                     <button type="submit" class="btn btn-primary">Show Products by Supplier</button>
                 </form>
 
-                <!--
                 <br><br><br>
-                <h2>List of goods that were revalued for a certain period</h2>
+                <h2>Список товаров, которые подвергались переоценке за определённый период</h2>
                 <h3>Enter Revaluation Date Range</h3>
                 <form th:action="@{/products/productsByRevaluation}" method="get">
                     <label for="startDate">Start Date:</label>
@@ -40,17 +39,15 @@
                     <input type="date" id="endDate" name="endDate" th:value="${endDate}" required>
                     <button type="submit">Submit</button>
                 </form>
-                -->
-
 
                 <br><br><br>
-                <h2>List of companies whose goods were returned during a certain period</h2>
+                <h2>Список фирм, товары которых были возвращены за определённый период:</h2>
                 <h3>Enter returns Date Range</h3>
-                <form action="/returns/findSuppliersWithReturnsInPeriod" method="get">
-                    <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate" required>
-                    <label for="endDate">End Date:</label>
-                    <input type="date" id="endDate" name="endDate" required>
+                <form action="/findSuppliersWithReturnsInPeriod" method="get">
+                    <label for="RStartDate">Start Date:</label>
+                    <input type="date" id="RStartDate" name="RStartDate" required>
+                    <label for="REndDate">End Date:</label>
+                    <input type="date" id="REndDate" name="REndDate" required>
                     <button type="submit">Search</button>
                 </form>
 
