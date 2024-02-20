@@ -30,8 +30,8 @@
                 </form>
 
                 <br><br><br>
-                <h2>Enter Revaluation Date Range</h2>
-
+                <h2>List of goods that were revalued for a certain period</h2>
+                <h3>Enter Revaluation Date Range</h3>
                 <form th:action="@{/products/productsByRevaluation}" method="get">
                     <label for="startDate">Start Date:</label>
                     <input type="date" id="startDate" name="startDate" th:value="${startDate}" required>

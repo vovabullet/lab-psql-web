@@ -4,9 +4,24 @@
 <body class="d-flex flex-column h-100">
 <div th:replace="fragments/navbar">Navbar</div>
 <main class="flex-shrink-0">
-  <h2>Products</h2>
-  <div th:each="product : ${products}">
-    <p th:text="${product}"></p>
+  <div class="container">
+    <h2>Products by revaluations from <span th:text="${startDate}"></span> to <span th:text="${endDate}"></span></h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Revaluation ID</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="product : ${products}">
+        <td th:text="${product.getProductId()}"></td>
+        <td th:text="${product.getName()}"></td>
+        <td th:text="${product.getDescription()}"></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </main>
 <footer th:replace="fragments/footer"/>

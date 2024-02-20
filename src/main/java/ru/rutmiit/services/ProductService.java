@@ -29,7 +29,7 @@ public class ProductService {
         return productRepository.findProductsBySupplierId(supplierId);
     }
 
-    public List<String> findProductsByRevaluationDateRange(Date startDate, Date endDate) {
+    public List<Product> findProductsByRevaluationDateRange(Date startDate, Date endDate) {
         return productRepository.findProductsByRevaluationDateRange(startDate, endDate);
     }
 }

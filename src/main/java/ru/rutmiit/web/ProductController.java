@@ -1,6 +1,7 @@
 package ru.rutmiit.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,9 +45,11 @@ public class ProductController {
         return "products-by-supplier";
     }
 
-    @GetMapping("/productsByRevaluation/")
-    public String showProductsByRevaluation(Model model, @RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
-        List<String> products = productService.findProductsByRevaluationDateRange(startDate, endDate);
+    @GetMapping("/productsByRevaluation")
+    public String showProductsByRevaluation(Model model,
+                                            @RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+                                            @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
+        List<Product> products = productService.findProductsByRevaluationDateRange(startDate, endDate);
         model.addAttribute("products", products);
         return "products-by-revaluation";
     }
