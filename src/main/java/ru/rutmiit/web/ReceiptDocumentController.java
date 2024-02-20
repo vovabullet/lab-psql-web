@@ -1,6 +1,7 @@
 package ru.rutmiit.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.rutmiit.models.entities.ReceiptDocument;
 import ru.rutmiit.services.ReceiptDocumentService;
@@ -30,5 +31,11 @@ public class ReceiptDocumentController {
     @PostMapping
     public ReceiptDocument saveReceiptDocument(@RequestBody ReceiptDocument receiptDocument) {
         return receiptDocumentService.save(receiptDocument);
+    }
+
+    @GetMapping("/all")
+    public String showAllReceiptDocuments(Model model) {
+        model.addAttribute("findAll", receiptDocumentService.findAll());
+        return "receiptDocuments-all";
     }
 }

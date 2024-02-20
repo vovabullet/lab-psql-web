@@ -2,6 +2,7 @@ package ru.rutmiit.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.rutmiit.models.entities.ProductReceipt;
 import ru.rutmiit.services.ProductReceiptService;
@@ -31,5 +32,11 @@ public class ProductReceiptController {
     @PostMapping
     public ProductReceipt saveProductReceipt(@RequestBody ProductReceipt productReceipt) {
         return productReceiptService.save(productReceipt);
+    }
+
+    @GetMapping("/all")
+    public String showAllReceipts(Model model) {
+        model.addAttribute("findAll", productReceiptService.findAll());
+        return "receipts-all";
     }
 }

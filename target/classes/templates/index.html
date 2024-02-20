@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+<!-- как время будет, закрыть все имопрты фрагментов в ~{ } -->
 <html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head"/>
+<head th:replace="~{fragments/head}"/>
 <body class="d-flex flex-column h-100">
 <div th:replace="fragments/navbar">Navbar</div>
 <main class="flex-shrink-0">
@@ -20,7 +21,7 @@
                     <h2>Products by Supplier</h2>
                 </div>
 
-                <form th:action="@{/products/productsBySupplier/{supplierId}}" method="get">
+                <form th:action="@{/products/productsBySupplier}" method="get">
                     <div class="mb-3">
                         <label for="supplierId" class="form-label">Supplier ID</label>
                         <input type="number" class="form-control" id="supplierId" name="supplierId" placeholder="Enter Supplier ID" th:value="${supplierId}" />
@@ -35,7 +36,6 @@
                     <label for="startDate">Start Date:</label>
 
                     <input type="date" id="startDate" name="startDate" required>
-
 
 
                     <label for="endDate">End Date:</label>

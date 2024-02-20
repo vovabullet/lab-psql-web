@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query(value = "SELECT p.name FROM Products p JOIN product_receipts pr ON p.productId = pr.productId JOIN receipt_documents rd ON pr.receiptId = rd.receiptId WHERE rd.supplierId = :supplierId", nativeQuery = true)
-    List<String> findProductsBySupplierId(@Param("supplierId") Long supplierId);
+    @Query(value = "SELECT p.* FROM Products p JOIN product_receipts pr ON p.product_id = pr.productid JOIN receipt_documents rd ON pr.receiptId = rd.receiptId WHERE rd.supplierId = :supplierId", nativeQuery = true)
+    List<Product> findProductsBySupplierId(@Param("supplierId") Long supplierId);
 
     @Query(value = "SELECT p.name FROM Products p JOIN Revaluations r ON p.productId = r.productId WHERE r.revaluationDate BETWEEN :startDate AND :endDate", nativeQuery = true)
     List<String> findProductsByRevaluationDateRange(@Param("startDate") Date startDate, @Param("endDate") Date endDate);

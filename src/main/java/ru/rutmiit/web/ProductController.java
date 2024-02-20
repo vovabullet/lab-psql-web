@@ -36,10 +36,9 @@ public class ProductController {
         return "products";
     }
 
-    @GetMapping("/productsBySupplier/{supplierId}")
-    public String showProductsBySupplier(Model model, @PathVariable String supplierId) {
-        Long supplierIdLong = Long.parseLong(supplierId);
-        List<String> products = productService.findProductsBySupplierId(supplierIdLong);
+    @GetMapping("/productsBySupplier")
+    public String showProductsBySupplier(Model model, @RequestParam("supplierId") Long supplierId) {
+        List<Product> products = productService.findProductsBySupplierId(supplierId);
         model.addAttribute("products", products);
         model.addAttribute("supplierId", supplierId);
         return "products-by-supplier";
