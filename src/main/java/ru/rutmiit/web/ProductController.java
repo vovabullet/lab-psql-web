@@ -2,6 +2,7 @@ package ru.rutmiit.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,5 +55,11 @@ public class ProductController {
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
         return "products-by-revaluation";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.delete(id);
+        return "redirect:/products";
     }
 }
