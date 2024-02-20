@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"/>
+<body class="d-flex flex-column h-100">
+<div th:replace="fragments/navbar">Navbar</div>
+<main class="flex-shrink-0">
+    <div class="container">
+        <h2 class="text-center text-dark mt-5">All Products</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${findAll}">
+                <td th:text="${product.getProductId()}"></td>
+                <td th:text="${product.getName()}"></td>
+                <td th:text="${product.getDescription()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer th:replace="fragments/footer"/>
+</body>
+</html>

@@ -1,0 +1,36 @@
+Snippet 2: Продукты по дате переоценки
+Повторяем шаги для реализации функциональности второго запроса.
+
+Репозиторий
+ProductRepository метод:
+
+@Query(value = "SELECT p.name FROM Products p JOIN Revaluations r ON p.productId = r.productId WHERE r.revaluationDate BETWEEN :startDate AND :endDate", nativeQuery = true)
+List<String> findProductsByRevaluationDateRange(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+Сервис
+ProductService метод:
+
+public List<String> findProductsByRevaluationDateRange(Date startDate, Date endDate) {
+    return productRepository.findProductsByRevaluationDateRange(startDate, endDate);
+}
+Контроллер
+@GetMapping("/productsByRevaluation/{startDate}/{endDate}")
+public String showProductsByRevaluation(Model model, @PathVariable Date startDate, @PathVariable Date endDate) {
+    List<String> products = productService.findProductsByRevaluationDateRange(startDate, endDate);
+    model.addAttribute("products", products);
+    return "products-by-revaluation";
+}
+HTML (Thymeleaf)
+products-by-revaluation.html
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products by Revaluation Date</title>
+</head>
+<body>
+    <h2>Products</h2>
+    <div th:each="product : ${products}">
+        <p th:text="${product}"></p>
+    </div>
+</body>
+</html>
