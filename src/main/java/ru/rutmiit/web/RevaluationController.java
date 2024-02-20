@@ -1,6 +1,7 @@
 package ru.rutmiit.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.rutmiit.models.entities.Revaluation;
 import ru.rutmiit.services.RevaluationService;
@@ -27,4 +28,5 @@ public class RevaluationController {
     public Revaluation saveRevaluation(@RequestBody Revaluation revaluation) {
         return revaluationService.save(revaluation);
     }
+
 }

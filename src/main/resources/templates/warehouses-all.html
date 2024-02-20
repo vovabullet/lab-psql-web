@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}"/>
+<body class="d-flex flex-column h-100">
+<div th:replace="fragments/navbar">Navbar</div>
+<main class="flex-shrink-0">
+    <div class="container">
+        <h2 class="text-center text-dark mt-5">All Receipts</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Quantity</th>
+                <th>Wholesale price</th>
+                <th>Product name</th>
+                <th>Receipt ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="warehouse : ${findAll}">
+                <td th:text="${warehouse.getName()}"></td>
+                <td th:text="${warehouse.getAddress()}"></td>
+                <td th:text="${warehouse.getWarehouseId()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer th:replace="fragments/footer"/>
 </body>
 </html>

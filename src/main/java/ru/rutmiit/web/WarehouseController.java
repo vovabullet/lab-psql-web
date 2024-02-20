@@ -1,6 +1,7 @@
 package ru.rutmiit.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.rutmiit.models.entities.Warehouse;
 import ru.rutmiit.services.WarehouseService;
@@ -30,5 +31,11 @@ public class WarehouseController {
     @PostMapping
     public Warehouse saveWarehouse(@RequestBody Warehouse warehouse) {
         return warehouseService.save(warehouse);
+    }
+
+    @GetMapping("/all")
+    public String showAllWarehouses(Model model) {
+        model.addAttribute("findAll", warehouseService.findAll());
+        return "warehouses-all";
     }
 }
