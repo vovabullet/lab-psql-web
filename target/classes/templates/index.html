@@ -41,13 +41,21 @@
                 </form>
 
                 <br><br><br>
-                <h2>Список фирм, товары которых были возвращены за определённый период:</h2>
+                <h2>Список фирм, товары которых были возвращены за определённый период</h2>
                 <h3>Enter returns Date Range</h3>
                 <form action="/findSuppliersWithReturnsInPeriod" method="get">
                     <label for="RStartDate">Start Date:</label>
                     <input type="date" id="RStartDate" name="RStartDate" required>
                     <label for="REndDate">End Date:</label>
                     <input type="date" id="REndDate" name="REndDate" required>
+                    <button type="submit">Search</button>
+                </form>
+
+                <br><br><br>
+                <h2>Список складов, поставляющих товары определённой фирмы</h2>
+                <h3>Enter supplier ID</h3>
+                <form action="/warehouses/bySupplier" method="get">
+                    <input type="number" name="supplierId"/>
                     <button type="submit">Search</button>
                 </form>
 

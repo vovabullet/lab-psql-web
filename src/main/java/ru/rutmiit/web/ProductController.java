@@ -51,6 +51,8 @@ public class ProductController {
                                             @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
         List<Product> products = productService.findProductsByRevaluationDateRange(startDate, endDate);
         model.addAttribute("products", products);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
         return "products-by-revaluation";
     }
 }

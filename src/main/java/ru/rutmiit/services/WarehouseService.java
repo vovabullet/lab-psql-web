@@ -2,6 +2,7 @@ package ru.rutmiit.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.rutmiit.models.entities.Product;
 import ru.rutmiit.models.entities.Warehouse;
 import ru.rutmiit.repositories.WarehouseRepository;
 
@@ -25,5 +26,10 @@ public class WarehouseService {
 
     public Warehouse save(Warehouse warehouse) {
         return warehouseRepository.save(warehouse);
+    }
+
+
+    public List<String> findWarehousesBySupplierId(Long supplierId) {
+        return warehouseRepository.findWarehousesBySupplierId(supplierId);
     }
 }

@@ -25,6 +25,8 @@ public class ReturnController {
                                                    Model model) {
         List<String> suppliers = returnService.findSuppliersWithReturnsInPeriod(startDate, endDate);
         model.addAttribute("suppliers", suppliers);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
         return "find-Suppliers-With-ReturnsIn-Period";
     }
 }
