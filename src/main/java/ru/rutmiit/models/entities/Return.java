@@ -1,7 +1,6 @@
 package ru.rutmiit.models.entities;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -13,11 +12,11 @@ public class Return {
     private int returnId;
 
     @ManyToOne
-    @JoinColumn(name = "ProductID", referencedColumnName = "ProductID")
+    @JoinColumn(name = "ProductID", referencedColumnName = "ProductId")
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "SupplierID", referencedColumnName = "SupplierID")
+    @JoinColumn(name = "SupplierID", referencedColumnName = "SupplierId")
     private Supplier supplier;
 
     @Column(name = "Quantity", nullable = false)
@@ -31,7 +30,6 @@ public class Return {
     private String reason;
 
     // Getters and Setters
-
 
     public int getReturnId() {
         return returnId;

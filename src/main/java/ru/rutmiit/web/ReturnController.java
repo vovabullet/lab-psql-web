@@ -1,34 +1,29 @@
 package ru.rutmiit.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import ru.rutmiit.models.entities.Return;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.rutmiit.services.ReturnService;
 
+import java.time.LocalDate;
 import java.util.List;
 
-@RestController
-@RequestMapping("/returns")
+@Controller
 public class ReturnController {
     private final ReturnService returnService;
 
-    @Autowired
     public ReturnController(ReturnService returnService) {
         this.returnService = returnService;
     }
 
-    @GetMapping
-    public List<Return> getAllReturns() {
-        return returnService.findAll();
-    }
-
-    @PostMapping
-    public Return saveReturn(@RequestBody Return aReturn) {
-        return returnService.save(aReturn);
-    }
-
-    @GetMapping("/{id}")
-    public Return getReturnById(@PathVariable Integer id) {
-        return returnService.findById(id);
+    @GetMapping("/findSuppliersWithReturnsInPeriod")
+    public String showSuppliersWithReturnsInPeriod(@RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+                                                   @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
+                                                   Model model) {
+        List<String> suppliers = returnService.findSuppliersWithReturnsInPeriod(startDate, endDate);
+        model.addAttribute("suppliers", suppliers);
+        return "find-Suppliers-With-ReturnsIn-Period";
     }
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"/>
+<body class="d-flex flex-column h-100">
+<div th:replace="fragments/navbar">Navbar</div>
+<main class="flex-shrink-0">
+    <div class="container">
+        <h2>Suppliers with Returns in Period</h2>
+        <table>
+            <tr>
+                <th>Supplier Name</th>
+            </tr>
+            <tr th:each="supplier : ${suppliers}">
+                <td th:text="${supplier}"></td>
+            </tr>
+        </table>
+    </div>
+</main>
+<footer th:replace="fragments/footer"/>
+</body>
+</html>

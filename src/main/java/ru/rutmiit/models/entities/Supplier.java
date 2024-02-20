@@ -2,6 +2,8 @@ package ru.rutmiit.models.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Suppliers")
 public class Supplier {
@@ -15,6 +17,9 @@ public class Supplier {
 
     @Column(name = "ContactInfo", nullable = false, length = 255)
     private String contactInfo;
+
+    @OneToMany(mappedBy = "supplier")
+    private Set<Return> returns;
 
     // Getters and Setters
     public int getSupplierId() {
