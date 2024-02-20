@@ -33,8 +33,8 @@ public class ProductService {
         return productRepository.findProductsByRevaluationDateRange(startDate, endDate);
     }
 
-    public void delete(Long id) {
-        productRepository.deleteById(id);
+    public void delete(int id) {
+        productRepository.deleteById((long) id);
     }
 
 }

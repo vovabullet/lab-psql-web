@@ -15,10 +15,14 @@ public class BeanConfiguration {
     }
 
     // HiddenHttpMethodFilter, который позволяет эмулировать HTTP методы PUT, DELETE и др. с помощью запроса POST и скрытого поля _method в форме
+/*
     @Bean
     public FilterRegistrationBean<HiddenHttpMethodFilter> hiddenHttpMethodFilter() {
         FilterRegistrationBean<HiddenHttpMethodFilter> filterRegistrationBean = new FilterRegistrationBean<>(new HiddenHttpMethodFilter());
         filterRegistrationBean.addUrlPatterns("/*");
         return filterRegistrationBean;
     }
+
+ */
+
 }

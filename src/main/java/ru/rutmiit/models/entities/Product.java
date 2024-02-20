@@ -8,7 +8,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProductId")
-    private int productId;
+    private Long productId;
 
     @Column(name = "Name", nullable = false, length = 255)
     private String name;
@@ -17,11 +17,11 @@ public class Product {
     private String description;
 
     // Getters and Setters
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 

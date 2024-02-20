@@ -2,7 +2,6 @@ package ru.rutmiit.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,9 +56,15 @@ public class ProductController {
         return "products-by-revaluation";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable Long id) {
+    @PostMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") int id) {
         productService.delete(id);
+        return "redirect:/products";
+    }
+
+    @PostMapping("/add")
+    public String addProduct(@ModelAttribute Product product) {
+        productService.save(product);
         return "redirect:/products";
     }
 }
